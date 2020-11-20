@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'core',
     'cars',
     'django_filters',
+    'rating',
 ]
 
 REST_FRAMEWORK = {

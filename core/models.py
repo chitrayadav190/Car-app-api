@@ -10,14 +10,36 @@ class Car(models.Model):
     model_name=models.CharField(max_length=100, unique=True)
 
     def __str__(self):
-        return self.make_id.make_name.model_id.model_name
+        return self.model_name
 class Rating(models.Model):
-    rating=((1,'Poor'),(2,'Below Average'),(3,'Average'),(4,'Good'),(5,'Excellent'))
+    # rating=(
+    #     ('1', 'Poor'),
+        #         ('2', 'Below Average'),
+        #         ('3', 'Average'),
+        #         ('4', 'Good'),
+        #         ('5', 'Excellent'),
+        #             )
+    POOR=1
+    BELOWAVERAGE=2
+    AVERAGE=3
+    GOOD=4
+    EXCELLENT=5
+    rating=(
+        (POOR, 'Poor'),
+        (BELOWAVERAGE, 'Below Average'),
+        (AVERAGE, 'Average'),
+        (GOOD, 'Good'),
+        (EXCELLENT, 'Excellent'),
+    )
+
     car=models.ForeignKey('Car',on_delete=models.CASCADE)
-    car_rating=models.IntegerField(choices=rating)
+    car_rating=models.IntegerField(
+        choices=rating,
+        default=EXCELLENT,
+    )
 
     def __str__(self):
-        return self.car_rating
+        return "hello"
 #
 # class AccessRecord(models.Model):
 #     car_record=models.ForeignKey('Rating',on_delete=models.CASCADE)
